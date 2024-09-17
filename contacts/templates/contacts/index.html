@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}  <!-- Add this line -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Contacts</title>
+</head>
+<body>
+    <h2>Contact List</h2>
+    <form method="GET" action="{% url 'search_contacts' %}">
+        <input type="text" name="query" placeholder="Search by name or email">
+        <input type="submit" value="Search">
+    </form>
+    <ul>
+        {% for contact in contacts %}
+            <li>
+                <a href="{% url 'contact_details' contact.id %}">{{ contact.first_name }}</a> | {{ contact.email }} | {{ contact.phone }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_contact' %}">Add New Contact</a>
+</body>
+</html>

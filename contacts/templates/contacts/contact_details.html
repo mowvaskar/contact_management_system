@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Contact Details</title>
+</head>
+<body>
+    <h2>{{ contact.first_name }} {{ contact.last_name }}</h2>
+    <p>Email: {{ contact.email }}</p>
+    <p>Phone: {{ contact.phone }}</p>
+    <p>Address: {{ contact.address }}</p>
+    <a href="{% url 'edit_contact' contact.id %}">Edit</a>
+    <form method="POST" action="{% url 'delete_contact' contact.id %}">
+        {% csrf_token %}
+        <input type="submit" value="Delete Contact">
+    </form>
+    <a href="{% url 'index' %}">Back to Home</a>
+</body>
+</html>

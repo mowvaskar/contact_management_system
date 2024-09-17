@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Edit Contact</title>
+</head>
+<body>
+    <h2>Edit Contact</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Update Contact">
+    </form>
+    <a href="{% url 'index' %}">Back to Home</a>
+</body>
+</html>
